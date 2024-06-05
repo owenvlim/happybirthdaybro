@@ -922,12 +922,16 @@ const checkGameOver = () => {
 };
 
 const checkBotWinCount = () => {
-    if (botWinCount >= 3) {
+    if (winCount < 2 && lossCount >= 3) { // Player must have won at least 2 games and then lost to the bot
         showPart3();
+    } else if (botWinCount >= 3) {
+        restartGame();
     } else {
         restartGame();
     }
 };
+
+
 
 const restartGame = () => {
     boardState = ['', '', '', '', '', '', '', '', ''];
@@ -989,7 +993,7 @@ specialButton.addEventListener("click", () => {
         setTimeout(() => {
             window.close();
         }, 3000); // Adjust the delay as needed
-        }, 10000); // Adjust the countdown duration as needed
+        }, 3300); // Adjust the countdown duration as needed
     });
     </script>
 </body>
